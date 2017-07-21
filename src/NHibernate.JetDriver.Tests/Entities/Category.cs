@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Iesi.Collections.Generic;
 
 namespace NHibernate.JetDriver.Tests.Entities
@@ -6,7 +7,7 @@ namespace NHibernate.JetDriver.Tests.Entities
     {
         public Category()
         {
-            Catalogs = new HashedSet<Catalog>();
+            Catalogs = new HashSet<Catalog>();
         }
 
         public virtual int Id

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Iesi.Collections.Generic;
 
 namespace NHibernate.JetDriver.Tests.TransformFromClauseBehaviour
@@ -89,8 +90,8 @@ namespace NHibernate.JetDriver.Tests.TransformFromClauseBehaviour
     public class CatalogCategoriesEntity
     {
         private object _Id;
-        private readonly ISet<CatalogCategoriesEntity> _ChildrenCategories = new HashedSet<CatalogCategoriesEntity>();
-        private readonly ISet<CatalogEntriesEntity> _CatalogEntries = new HashedSet<CatalogEntriesEntity>();
+        private readonly ISet<CatalogCategoriesEntity> _ChildrenCategories = new HashSet<CatalogCategoriesEntity>();
+        private readonly ISet<CatalogEntriesEntity> _CatalogEntries = new HashSet<CatalogEntriesEntity>();
         private CatalogCategoriesEntity _CatalogCategoryParent;
         private String _Name;
         private ProductCatalogsEntity _ProductCatalog;
@@ -135,7 +136,7 @@ namespace NHibernate.JetDriver.Tests.TransformFromClauseBehaviour
     {
         private object _Id;
         private String _Name;
-        private readonly ISet<CatalogEntriesEntity> _CatalogEntries = new HashedSet<CatalogEntriesEntity>();
+        private readonly ISet<CatalogEntriesEntity> _CatalogEntries = new HashSet<CatalogEntriesEntity>();
 
         public virtual object Id
         {
