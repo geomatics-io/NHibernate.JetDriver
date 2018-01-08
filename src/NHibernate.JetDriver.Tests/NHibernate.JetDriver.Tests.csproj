@@ -99,9 +99,9 @@
     <Compile Include="Entities\NHCD37.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NHibernate.JetDriver\NHibernate.JetDriver-2.0.csproj">
+    <ProjectReference Include="..\NHibernate.JetDriver\NHibernate.JetDriver.csproj">
       <Project>{3905D37C-CA49-4C13-99A4-4D815EFCAA56}</Project>
-      <Name>NHibernate.JetDriver-2.0</Name>
+      <Name>NHibernate.JetDriver</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
