@@ -3,27 +3,21 @@
   <metadata>
     <!-- Required elements-->
     <id>NHibernate.JetDriver</id>
-    <version>4.0.0.4000</version>
-    <description>The Jet driver and dialect for NHibernate 4.0.0.4000.</description>
+    <version>$version$</version>
+    <description>The Jet driver and dialect for NHibernate.</description>
     <authors>Christian Junk</authors>
 
     <!-- Optional elements -->
     <title>NHibernate.JetDriver</title>
     <owners>NHibernate.org</owners>
     <projectUrl>https://github.com/geomatics-io/NHibernate.JetDriver</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/geomatics-io/NHibernate.JetDriver/master/LICENSE.md</licenseUrl>
     <iconUrl>https://github.com/geomatics-io/NHibernate.JetDriver/raw/master/NHibernate.JetDriver.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <copyright>Licensed under LGPL.</copyright>
-    <tags>NHibernate Jet Driver</tags>
+    <tags>NHibernate jet driver csharp csharp-library dotnet</tags>
 
     <dependencies>
       <dependency id="NHibernate" version="4.0.0.4000" />
     </dependencies>
   </metadata>
-
-  <!-- Optional 'files' node -->
-  <files>
-  	<file src="bin\Debug\NHibernate.JetDriver.dll" target="lib\net40\NHibernate.JetDriver.dll" />
-    <file src="bin\Debug\NHibernate.JetDriver.pdb" target="lib\net40\NHibernate.JetDriver.pdb" />    
-  </files>
 </package>
