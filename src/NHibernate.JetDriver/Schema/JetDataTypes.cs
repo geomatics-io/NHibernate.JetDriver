@@ -23,12 +23,13 @@ namespace NHibernate.JetDriver.Schema
             JetDriverTypes.Add("11", "BIT");
             JetDriverTypes.Add("17", "BYTE");
             JetDriverTypes.Add("72", "GUID");
+            JetDriverTypes.Add("128", "IMAGE");
+            JetDriverTypes.Add("130", "TEXT");
+            JetDriverTypes.Add("131", "DECIMAL");
+            JetDriverTypes.Add("202", "TEXT");
+            JetDriverTypes.Add("203", "MEMO");//LongText
             JetDriverTypes.Add("204", "IMAGE");//BigBinary
             JetDriverTypes.Add("205", "IMAGE");//longBinary
-            JetDriverTypes.Add("203", "MEMO");//LongText
-            JetDriverTypes.Add("202", "TEXT");
-            JetDriverTypes.Add("131", "DECIMAL");
-            JetDriverTypes.Add("130", "TEXT");
         }
 
         public static string GetJetDriverTypeName(string nativeDatatype)
