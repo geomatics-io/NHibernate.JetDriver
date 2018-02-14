@@ -58,6 +58,7 @@ Task("Run-Unit-Tests")
 });
 
 Task("BuildPackages")
+    .IsDependentOn("Build")
     //.IsDependentOn("Run-Unit-Tests")
     .Does(() =>
 {
