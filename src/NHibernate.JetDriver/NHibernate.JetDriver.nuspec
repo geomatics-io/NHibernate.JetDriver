@@ -8,7 +8,7 @@
     <authors>Christian Junk</authors>
 
     <!-- Optional elements -->
-    <title>NHibernate.JetDriver</title>
+    <title>Geomatics.IO.NHibernate.JetDriver</title>
     <owners>NHibernate.org</owners>
     <projectUrl>https://github.com/geomatics-io/NHibernate.JetDriver</projectUrl>
     <licenseUrl>https://raw.githubusercontent.com/geomatics-io/NHibernate.JetDriver/master/LICENSE.md</licenseUrl>
