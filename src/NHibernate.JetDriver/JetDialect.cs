@@ -18,8 +18,14 @@ namespace NHibernate.JetDriver
         /// <summary>
         /// 
         /// </summary>
-        public JetDialect()
-            : base()
+        public JetDialect() : base()
+        {
+            RegisterColumnTypes();
+            RegisterFunctions();
+            RegisterDefaultProperties();
+        }
+
+        protected virtual void RegisterColumnTypes()
         {
             //BINARY 1 byte per character Any type of data may be stored in a field of this type. No translation of the data (for example, to text) is made. How the data is input in a binary field dictates how it will appear as output. 
             //BIT 1 byte Yes and No values and fields that contain only one of two values. 
@@ -78,18 +84,25 @@ namespace NHibernate.JetDriver
             RegisterColumnType(DbType.String, 1073741823, "MEMO");
             //RegisterColumnType(DbType.String, 1073741823, "MEMO");
             RegisterColumnType(DbType.Time, "DATETIME");
+        }
 
+        protected virtual void RegisterFunctions()
+        {
             RegisterFunction("upper", new StandardSQLFunction("ucase"));
             RegisterFunction("lower", new StandardSQLFunction("lcase"));
-
+            RegisterFunction("cast", new JetCastFunction());
+        }
+        
+        protected virtual void RegisterDefaultProperties()
+        {
             //although theoretically Access should support outer joins, it has some severe 
             //limitations on complexity of the SQL statements, so we better switch it off.
             DefaultProperties[Environment.MaxFetchDepth] = "0";
             DefaultProperties[Environment.PrepareSql] = "false";
-
             DefaultProperties[Environment.ConnectionDriver] = "NHibernate.Driver.JetDriver";
         }
 
+        #region Overriden Members
         /// <summary>
         /// The name of the SQL function that transforms a string to lowercase
         /// </summary>
@@ -269,6 +282,21 @@ namespace NHibernate.JetDriver
                 return "false";
             }
         }
+        #endregion
 
+        [Serializable]
+        protected class JetCastFunction : CastFunction
+        {
+
+            protected override bool CastingIsRequired(string sqlType)
+            {
+
+                return false;
+//                // SQLite doesn't support casting to datetime types.  It assumes you want an integer and destroys the date string.
+//                if (sqlType.ToLowerInvariant().Contains("date") || sqlType.ToLowerInvariant().Contains("time"))
+//                    return false;
+//                return true;
+            }
+        }
     }
 }
