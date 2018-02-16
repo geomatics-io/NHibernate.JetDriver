@@ -191,7 +191,7 @@ namespace NHibernate.JetDriver
         /// </summary>
         public override bool SupportsLimitOffset
         {
-            get { return false; }
+            get { return true; }
         }
 
         /// <summary>
@@ -202,7 +202,7 @@ namespace NHibernate.JetDriver
             get { return false; }
         }
 
-
+      
         /// <summary>
         /// MS Access and SQL Server support limit. This implementation has been made according the MS Access syntax
         /// </summary>
@@ -212,8 +212,32 @@ namespace NHibernate.JetDriver
         /// <returns>Processed query</returns>
         public override SqlString GetLimitString(SqlString queryString, SqlString offset, SqlString limit)
         {
-            return queryString.Replace("select", string.Format("select top {0}", limit));
+//            int insertIndex = GetAfterSelectInsertPoint(queryString);
+//
+//            var builder = new SqlStringBuilder(queryString);
+
+            /*
+             * Where 15 is the StartPos + PageSize, and 5 is the PageSize. https://stackoverflow.com/a/1900668/100863 
+            SELECT*
+            FROM(
+                SELECT TOP 3 sub.`SMP_GLOBALID`
+            FROM(
+                SELECT TOP 3 `tblSamples`.`SMP_GLOBALID`
+            FROM `tblSamples`
+            ORDER BY `SMP_GLOBALID`
+                ) sub
+                ORDER BY `SMP_GLOBALID` DESC
+                ) subOrdered
+                ORDER BY subOrdered.`SMP_GLOBALID`
+            var builder = new SqlStringBuilder(queryString);
+            builder.
+            */
+
+            var lim = limit.ToString();
+            var result = queryString.Replace("SELECT", string.Format("SELECT TOP {0}", limit));
+            return result;
         }
+
 
         /// <summary>
         /// 
@@ -298,5 +322,17 @@ namespace NHibernate.JetDriver
 //                return true;
             }
         }
+
+        #region Helpers
+        private static int GetAfterSelectInsertPoint(SqlString text)
+        {
+            if (text.StartsWithCaseInsensitive("select"))
+            {
+                return 6;
+            }
+
+            return -1;
+        }
+        #endregion
     }
 }
