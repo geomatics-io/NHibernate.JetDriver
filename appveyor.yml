@@ -1,4 +1,8 @@
 version: 1.0.{build}
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_informational_version: '4.1.1.4000-b{build}'
 skip_tags: true
 test: off
 os: Visual Studio 2017
