@@ -62,6 +62,9 @@ Task("BuildPackages")
     //.IsDependentOn("Run-Unit-Tests")
     .Does(() =>
 {
+
+	EnsureDirectoryExists("./artifacts");
+
     var nuGetPackSettings   = new NuGetPackSettings {
         Id                      = "Geomatics.IO.NHibernate.JetDriver",
         Version                 = "4.1.1.4000-b10",
@@ -77,9 +80,12 @@ Task("BuildPackages")
         //ReleaseNotes            = new [] {"Bug fixes", "Issue fixes", "Typos"},
         Tags                    = new [] {"NHibernate", "jet", "driver", "csharp", "csharp-library", "dotnet"},
         RequireLicenseAcceptance= false,
-        //Symbols                 = false,
+        //Symbols                 = true,
         NoPackageAnalysis       = true,
-        Files                   = new [] {new NuSpecContent {Source = "NHibernate.JetDriver.dll", Target = "bin"},},
+        Files                   = new [] {
+        									new NuSpecContent {Source = "NHibernate.JetDriver.dll", Target = "lib/net40"},
+        									//new NuSpecContent {Source = "NHibernate.JetDriver.pdb", Target = "lib/net40"}
+        								 },
         BasePath                = "./src/NHibernate.JetDriver/bin/Release",
         OutputDirectory         = "./artifacts",
         IncludeReferencedProjects = true,
