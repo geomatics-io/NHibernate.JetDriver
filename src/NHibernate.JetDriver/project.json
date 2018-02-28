@@ -1,0 +1,13 @@
+﻿{
+  "dependencies": {
+    "NHibernate": "4.1.1.4000",
+    "Iesi.Collections": "4.0.0.4000",
+    "log4net": "2.0.3"
+  },
+  "frameworks": {
+    ".NETFramework,Version=v4.0": { }
+  },
+  "runtimes": {
+    "win": { }
+  }
+}
