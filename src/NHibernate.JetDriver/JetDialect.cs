@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Data.OleDb;
+using System.Text.RegularExpressions;
 using NHibernate.Dialect.Function;
 using NHibernate.Dialect.Schema;
 using NHibernate.JetDriver.Schema;
@@ -212,9 +215,9 @@ namespace NHibernate.JetDriver
         /// <returns>Processed query</returns>
         public override SqlString GetLimitString(SqlString queryString, SqlString offset, SqlString limit)
         {
-//            int insertIndex = GetAfterSelectInsertPoint(queryString);
-//
-//            var builder = new SqlStringBuilder(queryString);
+            //            int insertIndex = GetAfterSelectInsertPoint(queryString);
+            //
+            //            var builder = new SqlStringBuilder(queryString);
 
             /*
              * Where 15 is the StartPos + PageSize, and 5 is the PageSize. https://stackoverflow.com/a/1900668/100863 
@@ -233,9 +236,18 @@ namespace NHibernate.JetDriver
             builder.
             */
 
-            var lim = limit.ToString();
-            var result = queryString.Replace("SELECT", string.Format("SELECT TOP {0}", limit));
-            return result;
+//            var returnList = new List<string>();
+//
+//            DataTable dt = _jetDbConnection.Connection.GetOleDbSchemaTable(OleDbSchemaGuid.Primary_Keys, new Object[] { null, null, "Employee" });
+//            int columnOrdinalForName = dt.Columns["COLUMN_NAME"].Ordinal;
+//
+//            foreach (DataRow r in dt.Rows)
+//            {
+//                returnList.Add(r.ItemArray[columnOrdinalForName].ToString());
+//            }
+
+            var result = Regex.Replace(queryString.ToString(), "SELECT", $"SELECT TOP {limit}", RegexOptions.IgnoreCase);
+            return new SqlString(result);
         }
 
 
@@ -268,10 +280,11 @@ namespace NHibernate.JetDriver
             return quoted.Replace(new string(CloseQuote, 2), CloseQuote.ToString());
         }
 
+        private JetDbConnection _jetDbConnection;
         public override IDataBaseSchema GetDataBaseSchema(DbConnection connection)
         {
-            var jetConnection = (JetDbConnection)connection;
-            return new JetDataBaseSchema(jetConnection.Connection);
+            _jetDbConnection = (JetDbConnection)connection;
+            return new JetDataBaseSchema(_jetDbConnection.Connection);
         }
 
         public override JoinFragment CreateOuterJoinFragment()
