@@ -111,6 +111,7 @@
     <Compile Include="JetCaseFragment.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="JetConnectionStringBuilder.cs" />
     <Compile Include="JetDbCommand.cs">
       <SubType>Component</SubType>
     </Compile>
