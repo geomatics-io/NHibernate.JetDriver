@@ -236,18 +236,18 @@ namespace NHibernate.JetDriver
             builder.
             */
 
-//            var returnList = new List<string>();
-//
-//            DataTable dt = _jetDbConnection.Connection.GetOleDbSchemaTable(OleDbSchemaGuid.Primary_Keys, new Object[] { null, null, "Employee" });
-//            int columnOrdinalForName = dt.Columns["COLUMN_NAME"].Ordinal;
-//
-//            foreach (DataRow r in dt.Rows)
-//            {
-//                returnList.Add(r.ItemArray[columnOrdinalForName].ToString());
-//            }
+            //            var returnList = new List<string>();
+            //
+            //            DataTable dt = _jetDbConnection.Connection.GetOleDbSchemaTable(OleDbSchemaGuid.Primary_Keys, new Object[] { null, null, "Employee" });
+            //            int columnOrdinalForName = dt.Columns["COLUMN_NAME"].Ordinal;
+            //
+            //            foreach (DataRow r in dt.Rows)
+            //            {
+            //                returnList.Add(r.ItemArray[columnOrdinalForName].ToString());
+            //            }
 
-            var result = Regex.Replace(queryString.ToString(), "SELECT", $"SELECT TOP {limit}", RegexOptions.IgnoreCase);
-            return new SqlString(result);
+            var top = new SqlString(" top ", limit);
+            return queryString.Insert(GetAfterSelectInsertPoint(queryString), top);
         }
 
 
