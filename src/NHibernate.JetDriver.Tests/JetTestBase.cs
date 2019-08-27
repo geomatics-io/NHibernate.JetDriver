@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Reflection;
-using NHibernate.ByteCode.Castle;
 using NHibernate.Cfg;
 using NHibernate.Connection;
 using NHibernate.Engine;

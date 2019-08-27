@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Data;
+using System.Data.Common;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -27,14 +28,14 @@ namespace NHibernate.JetDriver
 
         private readonly IDictionary _queryCache = new Hashtable();
 
-        public override IDbCommand GenerateCommand(CommandType type, SqlString sqlString, SqlType[] parameterTypes)
+        public override DbCommand GenerateCommand(CommandType type, SqlString sqlString, SqlType[] parameterTypes)
         {
             SqlString final = IsSelectStatement(sqlString) ? FinalizeJoins(sqlString) : sqlString;
             return base.GenerateCommand(type, final, parameterTypes);
         }
 
         /// <summary></summary>
-        public override IDbConnection CreateConnection()
+        public override DbConnection CreateConnection()
         {
             return new JetDbConnection();
         }
@@ -42,7 +43,7 @@ namespace NHibernate.JetDriver
         /// <summary>
         /// We have to have a special db command type to support conversion of data types, because Access is weird.
         /// </summary>
-        public override IDbCommand CreateCommand()
+        public override DbCommand CreateCommand()
         {
             return new JetDbCommand();
         }
