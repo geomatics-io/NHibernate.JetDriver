@@ -3,7 +3,7 @@
 #---------------------------------#
 
 # version format
-version: 5.1.1.{build}-{branch}
+version: 5.1.1-b{build}
 
 # you can use {branch} name in version format too
 # version: 1.0.{build}-{branch}
@@ -25,7 +25,7 @@ assembly_info:
   file: '**\AssemblyInfo.*'
   assembly_version: "5.1.0"
   assembly_file_version: "5.1.1.{build}"
-  assembly_informational_version: '5.1.1'
+  assembly_informational_version: '5.1.1.{build}-{branch}'
 
 # Automatically register private account and/or project AppVeyor NuGet feeds.
 nuget:
@@ -77,7 +77,7 @@ test: off
 artifacts:
 
   # pushing a single file with environment variable in path and "Deployment name" specified
-  - path: Geomatics.IO.NHibernate.JetDriver.5.1.1.nupkg
+  - path: Geomatics.IO.NHibernate.JetDriver.%APPVEYOR_BUILD_VERSION%.nupkg
   #  name: NHibernate.JetDriver.dll
 
   # pushing all *.nupkg files in build directory recursively
@@ -93,7 +93,7 @@ artifacts:
 #  api_key:
 #    secure: ZaCH4jUYdYUOiuc5ZW+1Xz96oU1mO/Xt6bSTsGKgYtQdBJlpHX8lVTsSI+QgFmks
 #  skip_symbols: true
-#  artifact: Geomatics.IO.NHibernate.JetDriver.5.1.1.nupkg
+#  artifact: Geomatics.IO.NHibernate.JetDriver.%APPVEYOR_BUILD_VERSION%.nupkg
 
 
 #---------------------------------#
