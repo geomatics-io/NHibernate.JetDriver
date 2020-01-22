@@ -93,7 +93,7 @@ deploy:
   api_key:
     secure: ZaCH4jUYdYUOiuc5ZW+1Xz96oU1mO/Xt6bSTsGKgYtQdBJlpHX8lVTsSI+QgFmks
   skip_symbols: true
-  artifact: C:\projects\nhibernate-jetdriver\Geomatics.IO.NHibernate.JetDriver.5.1.1.nupkg
+  artifact: Geomatics.IO.NHibernate.JetDriver.5.1.1.nupkg
 
 
 #---------------------------------#
