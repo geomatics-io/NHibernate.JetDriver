@@ -47,7 +47,7 @@
   </metadata>
 
   <files>
-    <file src="..\..\assets\icon.png" target="images\icon.png" />
+    <file src="..\..\.assets\icon.png" target="images\icon.png" />
     <file src="src\NHibernate.JetDriver\bin\Release\NHibernate.JetDriver.dll" target="lib\net461\NHibernate.JetDriver.dll" />
     <file src="src\NHibernate.JetDriver\bin\Release\NHibernate.JetDriver.pdb" target="lib\net461\NHibernate.JetDriver.pdb" />
     <file src="src\NHibernate.JetDriver\bin\Release\NHibernate.JetDriver.xml" target="lib\net461\NHibernate.JetDriver.xml" />
