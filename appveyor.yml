@@ -74,10 +74,10 @@ test: off
 #      artifacts configuration    #
 #---------------------------------#
 
-# artifacts:
+artifacts:
 
   # pushing a single file with environment variable in path and "Deployment name" specified
-  # - path: src/NHibernate.JetDriver/bin/$(configuration)
+  - path: C:\projects\nhibernate-jetdriver\Geomatics.IO.NHibernate.JetDriver.5.1.1.nupkg
   #  name: NHibernate.JetDriver.dll
 
   # pushing all *.nupkg files in build directory recursively
@@ -92,7 +92,7 @@ deploy:
   provider: NuGet
   api_key:
     secure: ZaCH4jUYdYUOiuc5ZW+1Xz96oU1mO/Xt6bSTsGKgYtQdBJlpHX8lVTsSI+QgFmks
-  skip_symbols: false
+  skip_symbols: true
   artifact: C:\projects\nhibernate-jetdriver\Geomatics.IO.NHibernate.JetDriver.5.1.1.nupkg
 
 
