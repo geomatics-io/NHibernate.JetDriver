@@ -13,7 +13,7 @@ version: 1.0.{build}
 #---------------------------------#
 
 # Build worker image (VM template)
-image: Visual Studio 2015
+image: Visual Studio 2016
 
 
 # enable patching of AssemblyInfo.* files
@@ -65,11 +65,12 @@ test: off
 artifacts:
 
   # pushing a single file with environment variable in path and "Deployment name" specified
-  - path: src/NHibernate.JetDriver/bin/$(configuration)
-    name: NHibernate.JetDriver.dll
+  # - path: src/NHibernate.JetDriver/bin/$(configuration)
+  #  name: NHibernate.JetDriver.dll
 
   # pushing all *.nupkg files in build directory recursively
-  - path: '**\*.nupkg'
+  # - path: '**\*.nupkg'
+   path: src/**/*.nupkg
 
 #---------------------------------#
 #     deployment configuration    #
