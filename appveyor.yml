@@ -13,7 +13,7 @@ version: 1.0.{build}
 #---------------------------------#
 
 # Build worker image (VM template)
-image: Visual Studio 2016
+image: Visual Studio 2015
 
 
 # enable patching of AssemblyInfo.* files
@@ -70,7 +70,7 @@ artifacts:
 
   # pushing all *.nupkg files in build directory recursively
   # - path: '**\*.nupkg'
-   path: src/**/*.nupkg
+   path: src/NHibernate.JetDriver/*.nupkg
 
 #---------------------------------#
 #     deployment configuration    #
