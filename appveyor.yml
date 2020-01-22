@@ -1,29 +1,88 @@
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+# version format
 version: 1.0.{build}
+
+# you can use {branch} name in version format too
+# version: 1.0.{build}-{branch}
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+# Build worker image (VM template)
 image: Visual Studio 2015
-build_script:
-- cmd: PowerShell -Version 2.0 .\build.ps1
-configuration: Release
+
+
+# enable patching of AssemblyInfo.* files
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
   assembly_informational_version: '5.1.0.0-b{build}'
-test: off
-artifacts:
-- path: artifacts\**\*.nupkg
+
+# Automatically register private account and/or project AppVeyor NuGet feeds.
 nuget:
   account_feed: false
   project_feed: true
-  disable_publish_on_pr: true 
+  disable_publish_on_pr: true     # disable publishing of .nupkg artifacts to account/project feeds for pull request builds
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+# build Configuration, i.e. Debug, Release, etc.
+configuration: Release
+
+# to add several configurations to build matrix:
+#configuration:
+#  - Debug
+#  - Release
+
+# to run your custom scripts instead of automatic MSBuild
+build_script:
+- cmd: PowerShell -Version 2.0 .\build.ps1
+
+#---------------------------------#
+#       tests configuration       #
+#---------------------------------#
+
+# to run tests against only selected assemblies and/or categories
+test: off
+
+#---------------------------------#
+#      artifacts configuration    #
+#---------------------------------#
+
+artifacts:
+  # pushing all *.nupkg files in build directory recursively
+  - path: '**\*.nupkg'
+
+#---------------------------------#
+#     deployment configuration    #
+#---------------------------------#
+
+# providers: Local, FTP, WebDeploy, AzureCS, AzureBlob, S3, NuGet, Environment
+# provider names are case-sensitive!
 deploy:
+
+  # Deploying to NuGet feed
   provider: NuGet
   api_key:
     secure: AlZb9RmiC8ciqIT8+BygQoiae07DdHKte0lnn8ZQgHgj25ZBi6hXLIe4UPeNJwnQ
   skip_symbols: false
-  artifact: /.*\.nupkg/
+  artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
+
+#---------------------------------#
+#         notifications           #
+#---------------------------------#
+
 notifications:
-- provider: Email
-  to:
-  - christian.junk@geomatics.io
+  # Email
+  - provider: Email
+    to:
+    - christian.junk@geomatics.io
   on_build_success: true
   on_build_failure: true
   on_build_status_changed: false
