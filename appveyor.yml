@@ -77,7 +77,7 @@ test: off
 artifacts:
 
   # pushing a single file with environment variable in path and "Deployment name" specified
-  - path: C:\projects\nhibernate-jetdriver\Geomatics.IO.NHibernate.JetDriver.5.1.1.nupkg
+  - path: Geomatics.IO.NHibernate.JetDriver.5.1.1.nupkg
   #  name: NHibernate.JetDriver.dll
 
   # pushing all *.nupkg files in build directory recursively
