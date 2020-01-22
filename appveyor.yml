@@ -11,7 +11,7 @@ branches:
   only:
   - master
 build_script:
-- ps: .\build.ps1
+- cmd: PowerShell -Version 2.0 .\build.ps1
 artifacts:
 - path: artifacts\**\*.nupkg
 nuget:
