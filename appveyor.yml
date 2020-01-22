@@ -3,7 +3,7 @@
 #---------------------------------#
 
 # version format
-version: 5.0.{build}-{branch}
+version: 5.0.{build}
 
 # you can use {branch} name in version format too
 # version: 1.0.{build}-{branch}
@@ -23,9 +23,9 @@ install:
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
-  assembly_version: "5.0.0.0"
-  assembly_file_version: "5.0.0.0"
-  assembly_informational_version: '5.0.0.0-b{build}'
+  assembly_version: "{version}"
+  assembly_file_version: "{version}"
+  assembly_informational_version: '{version}-prerelease'
 
 # Automatically register private account and/or project AppVeyor NuGet feeds.
 nuget:
