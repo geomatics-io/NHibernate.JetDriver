@@ -1,31 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29215.179
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate.JetDriver", "NHibernate.JetDriver\NHibernate.JetDriver.csproj", "{3905D37C-CA49-4C13-99A4-4D815EFCAA56}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHibernate.JetDriver", "NHibernate.JetDriver\NHibernate.JetDriver.csproj", "{F7265FE1-7064-4F9D-86CB-86EEBC844BA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
-		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3905D37C-CA49-4C13-99A4-4D815EFCAA56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3905D37C-CA49-4C13-99A4-4D815EFCAA56}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3905D37C-CA49-4C13-99A4-4D815EFCAA56}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3905D37C-CA49-4C13-99A4-4D815EFCAA56}.Debug|x86.Build.0 = Debug|Any CPU
-		{3905D37C-CA49-4C13-99A4-4D815EFCAA56}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3905D37C-CA49-4C13-99A4-4D815EFCAA56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3905D37C-CA49-4C13-99A4-4D815EFCAA56}.Release|x86.ActiveCfg = Release|Any CPU
-		{3905D37C-CA49-4C13-99A4-4D815EFCAA56}.Release|x86.Build.0 = Release|Any CPU
+		{F7265FE1-7064-4F9D-86CB-86EEBC844BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7265FE1-7064-4F9D-86CB-86EEBC844BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7265FE1-7064-4F9D-86CB-86EEBC844BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7265FE1-7064-4F9D-86CB-86EEBC844BA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {23E60FD7-9651-4577-8E30-8272694A50AC}
+		SolutionGuid = {3BEF163C-C4F4-466A-BCDF-E9CD79946659}
 	EndGlobalSection
 EndGlobal
