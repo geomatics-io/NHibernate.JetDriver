@@ -64,7 +64,7 @@ test: off
 
 artifacts:
   # pushing all *.nupkg files in build directory recursively
-  - path: '**\NHibernate.JetDriver*.nupkg'
+  - path: 'artifacts\**\*.nupkg'
 
 #---------------------------------#
 #     deployment configuration    #
@@ -77,7 +77,7 @@ deploy:
   # Deploying to NuGet feed
   provider: NuGet
   api_key:
-    secure: AlZb9RmiC8ciqIT8+BygQoiae07DdHKte0lnn8ZQgHgj25ZBi6hXLIe4UPeNJwnQ
+    secure: ZaCH4jUYdYUOiuc5ZW+1Xz96oU1mO/Xt6bSTsGKgYtQdBJlpHX8lVTsSI+QgFmks
   skip_symbols: false
   artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
 
