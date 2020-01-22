@@ -69,22 +69,13 @@ artifacts:
     name: NHibernate.JetDriver.dll
 
   # pushing all *.nupkg files in build directory recursively
-  - path: 'artifacts\**\*.nupkg'
+  - path: '**\*.nupkg'
 
 #---------------------------------#
 #     deployment configuration    #
 #---------------------------------#
 
-# providers: Local, FTP, WebDeploy, AzureCS, AzureBlob, S3, NuGet, Environment
-# provider names are case-sensitive!
-deploy:
 
-  # Deploying to NuGet feed
-  provider: NuGet
-  api_key:
-    secure: ZaCH4jUYdYUOiuc5ZW+1Xz96oU1mO/Xt6bSTsGKgYtQdBJlpHX8lVTsSI+QgFmks
-  skip_symbols: false
-  artifact: /.*\.nupkg/           # upload all NuGet packages to release assets
 
 #---------------------------------#
 #         notifications           #
