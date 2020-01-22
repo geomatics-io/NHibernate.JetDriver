@@ -3,7 +3,7 @@
 #---------------------------------#
 
 # version format
-version: 5.0.{build}
+version: 5.1.1.{build}
 
 # you can use {branch} name in version format too
 # version: 1.0.{build}-{branch}
@@ -23,9 +23,9 @@ install:
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
-  assembly_version: "{version}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: '{version}-prerelease'
+  assembly_version: "5.1.0"
+  assembly_file_version: "5.1.1.0"
+  assembly_informational_version: '5.1.1'
 
 # Automatically register private account and/or project AppVeyor NuGet feeds.
 nuget:
@@ -61,7 +61,7 @@ build_script:
 
 # scripts to run after build (working directory and environment changes are persisted from the previous steps)
 after_build:
-  nuget pack src\NHibernate.JetDriver\NHibernate.JetDriver.csproj -Version $env:appveyor_build_version -Verbosity detailed
+  nuget pack src\NHibernate.JetDriver\NHibernate.JetDriver.csproj -Version 5.1.1 -Verbosity detailed
 
 #---------------------------------#
 #       tests configuration       #
