@@ -1,4 +1,4 @@
-#tool nuget:?package=NUnit.Runners&version=2.6.4
+#tool nuget:?package=NUnit.ConsoleRunner&version=3.4.0
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
@@ -52,62 +52,9 @@ Task("Run-Unit-Tests")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    NUnit("./src/**/bin/" + configuration + "/*.Tests.dll", new NUnitSettings {
-        NoResults = true, X86 = true
+    NUnit3("./src/**/bin/" + configuration + "/*.Tests.dll", new NUnit3Settings {
+        NoResults = true
         });
-});
-
-Task("BuildPackages")
-    .IsDependentOn("Build")
-    //.IsDependentOn("Run-Unit-Tests")
-    .Does(() =>
-{
-
-	EnsureDirectoryExists("./artifacts");
-
-    var nuGetPackSettings   = new NuGetPackSettings {
-        Id                      = "Geomatics.IO.NHibernate.JetDriver",
-        Version                 = "4.1.1.4000-b10",
-        Title                   = "Geomatics.IO.NHibernate.JetDriver",
-        Owners                  = new[] {"christianjunk", "geomatics"},
-        Authors                 = new[] {"Christian Junk", "NHibernate.org"},
-        Description             = "The Jet driver and dialect for NHibernate.",
-        //Summary                 = "Excellent summary of what the package does",
-        ProjectUrl              = new Uri("https://github.com/geomatics-io/NHibernate.JetDriver"),
-        IconUrl                 = new Uri("https://github.com/geomatics-io/NHibernate.JetDriver/raw/master/NHibernate.JetDriver.png"),
-        LicenseUrl              = new Uri("https://raw.githubusercontent.com/geomatics-io/NHibernate.JetDriver/master/LICENSE.md"),
-        //Copyright               = "Some company 2015",
-        //ReleaseNotes            = new [] {"Bug fixes", "Issue fixes", "Typos"},
-        Tags                    = new [] {"NHibernate", "jet", "driver", "csharp", "csharp-library", "dotnet"},
-        RequireLicenseAcceptance= false,
-        //Symbols                 = true,
-        NoPackageAnalysis       = true,
-        Files                   = new [] {
-        									new NuSpecContent {Source = "NHibernate.JetDriver.dll", Target = "lib/net40"},
-        									//new NuSpecContent {Source = "NHibernate.JetDriver.pdb", Target = "lib/net40"}
-        								 },
-        BasePath                = "./src/NHibernate.JetDriver/bin/Release",
-        OutputDirectory         = "./artifacts",
-        IncludeReferencedProjects = true,
-        Properties = new Dictionary<string, string>
-        {
-            { "Configuration", "Release" }
-        },
-        Dependencies            = new []{ new NuSpecDependency {
-                                             Id              = "NHibernate",
-                                             Version         = "[4.0.0.4000,4.1.1.4000]"
-                                          },
-                                          new NuSpecDependency {
-                                             Id              = "log4net",
-                                             Version         = "[2.0.0,2.0.8]"
-                                          },
-                                        },      
-    };
-
-    MSBuild("./src/NHibernate.JetDriver.Tests/NHibernate.JetDriver.Tests.csproj", new MSBuildSettings().SetConfiguration("Release").SetMSBuildPlatform(MSBuildPlatform.x86));
-
-    MSBuild("./src/NHibernate.JetDriver/NHibernate.JetDriver.csproj", new MSBuildSettings().SetConfiguration("Release"));
-    NuGetPack(nuGetPackSettings);
 });
 
 //////////////////////////////////////////////////////////////////////
@@ -115,7 +62,7 @@ Task("BuildPackages")
 //////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("BuildPackages");
+    .IsDependentOn("Run-Unit-Tests");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION

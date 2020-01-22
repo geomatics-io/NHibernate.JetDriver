@@ -9,9 +9,9 @@ using System.Security;
 [assembly: AssemblyProductAttribute("NHibernate.JetDriver")]
 [assembly: AssemblyCopyrightAttribute("Licensed under LGPL.")]
 
-[assembly: AssemblyVersionAttribute("4.1.1.4000")]
+[assembly: AssemblyVersion("5.1.0.0")]
 [assembly: AssemblyInformationalVersionAttribute("4.1.1.4000")]
-[assembly: AssemblyFileVersionAttribute("4.1.1.4000")]
+[assembly: AssemblyFileVersion("5.1.0.0")]
 
 [assembly: AssemblyDelaySignAttribute(false)]
 [assembly: AllowPartiallyTrustedCallers()]
