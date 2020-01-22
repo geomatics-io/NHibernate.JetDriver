@@ -13,19 +13,24 @@ version: 1.0.{build}
 #---------------------------------#
 
 # Build worker image (VM template)
-image: Visual Studio 2015
+image: Visual Studio 2019
 
+# scripts that run after cloning repository
+install:
+  appveyor DownloadFile https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
 
 # enable patching of AssemblyInfo.* files
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
-  assembly_informational_version: '5.1.0.0-b{build}'
+  assembly_version: "5.0.{build}"
+  assembly_file_version: "{version}"
+  assembly_informational_version: '5.0.0.0-b{build}'
 
 # Automatically register private account and/or project AppVeyor NuGet feeds.
 nuget:
   account_feed: false
-  project_feed: true
+  project_feed: false
   disable_publish_on_pr: true     # disable publishing of .nupkg artifacts to account/project feeds for pull request builds
 
 #---------------------------------#
@@ -44,12 +49,19 @@ configuration: Release
 # "project" is relative to the original build directory and not influenced by directory changes in "before_build".
 build:
 
-  publish_nuget: true             # package projects with .nuspec files and push to artifacts
-  publish_nuget_symbols: true     # generate and publish NuGet symbol packages
+  publish_nuget: false             # package projects with .nuspec files and push to artifacts
+  publish_nuget_symbols: false     # generate and publish NuGet symbol packages
+
+# MSBuild verbosity level
+  verbosity: quiet|minimal|normal|detailed
 
 # to run your custom scripts instead of automatic MSBuild
 build_script:
 - cmd: PowerShell -Version 2.0 .\build.ps1
+
+# scripts to run after build (working directory and environment changes are persisted from the previous steps)
+after_build:
+  nuget pack $env:APPVEYOR_BUILD_FOLDER\src\NHibernate.JetDriver\NHibernate.JetDriver.nuspec -Version $env:appveyor_build_version
 
 #---------------------------------#
 #       tests configuration       #
@@ -62,7 +74,7 @@ test: off
 #      artifacts configuration    #
 #---------------------------------#
 
-artifacts:
+# artifacts:
 
   # pushing a single file with environment variable in path and "Deployment name" specified
   # - path: src/NHibernate.JetDriver/bin/$(configuration)
@@ -70,7 +82,7 @@ artifacts:
 
   # pushing all *.nupkg files in build directory recursively
   # - path: '**\*.nupkg'
-   path: src/NHibernate.JetDriver/*.nupkg
+  # path: src/NHibernate.JetDriver/*.nupkg
 
 #---------------------------------#
 #     deployment configuration    #
