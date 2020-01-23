@@ -17,8 +17,7 @@
     <authors>Christian Junk, NHibernate.org</authors>
 
     <!-- Optional elements -->
-
-    <title>Geomatics.IO.NHibernate.JetDriver</title>
+    <title>NHibernate.JetDriver</title>
      <!-- Owners are typically nuget.org identities that allow gallery
             users to easily find other packages by the same owners.  -->
     <owners>christianjunk, geomatics</owners>
